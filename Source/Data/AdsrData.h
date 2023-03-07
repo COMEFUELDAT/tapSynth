@@ -1,8 +1,8 @@
 /*
   ==============================================================================
 
-    SynthSound.h
-    Created: 10 Dec 2020 1:56:00pm
+    AdsrData.h
+    Created: 7 Mar 2023 9:57:17am
     Author:  sasch
 
   ==============================================================================
@@ -12,10 +12,11 @@
 
 #include <JuceHeader.h>
 
-class SynthSound : public juce::SynthesiserSound
+class AdsrData : public juce::ADSR
 {
 public:
-    bool appliesToNote(int midiNoteNumber) override { return true; }
-    bool appliesToChannel(int midiChannel) override { return true; }
+    void updateADSR(const float attack, const float decay, const float sustain, const float release);
 
+private:
+    juce::ADSR::Parameters adsrParams;
 };
